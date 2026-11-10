@@ -91,7 +91,7 @@ int verTopePilaCircular(tPila* pp, void* pd, unsigned tam)
         return PILA_VACIA; //PILA_VACIA
     }
 
-    memcpy(pd, (*pp)->info, MINIMO((*pp)->sig->tamInfo, tam));
+    memcpy(pd, (*pp)->sig->info, MINIMO((*pp)->sig->tamInfo, tam));
 
     return TODO_OK;
 }
