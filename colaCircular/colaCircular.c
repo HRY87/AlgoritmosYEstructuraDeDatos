@@ -91,7 +91,7 @@ int verTopeColaCircular(tCola* pc, void* pd, unsigned tam)
         return COLA_VACIA; //COLA_VACIA
     }
 
-    memcpy(pd, (*pc)->info, MINIMO((*pc)->sig->tamInfo, tam));
+    memcpy(pd, (*pc)->sig->info, MINIMO((*pc)->sig->tamInfo, tam));
 
     return TODO_OK;
 }
