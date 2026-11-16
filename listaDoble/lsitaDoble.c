@@ -52,27 +52,25 @@ int ponerAlInicioListaDoble(tListaD* pl, const void* dato, unsigned cantBytes)
     tNodoD *act = *pl,
             *nue;
 
-    if(act)
+    while(act && act->ant)
+        act = act->ant;
+
+    nue = (tNodoD*)malloc(sizeof(tNodoD));
+
+    if(nue == NULL)
+        return SIN_MEM;
+
+    nue->info = malloc(cantBytes);
+
+    if(nue->info == NULL)
     {
-        while(act->ant)
-            act = act->ant;
-
-        nue = (tNodoD*)malloc(sizeof(tNodoD));
-
-        if(nue == NULL)
-            return SIN_MEM;
-
-        nue->info = malloc(cantBytes);
-
-        if(nue->info == NULL)
-        {
-            free(nue);
-            return SIN_MEM;
-        }
+        free(nue);
+        return SIN_MEM;
     }
 
     memcpy(nue->info, dato, cantBytes);
     nue->tamInfo = cantBytes;
+
     nue->sig = act;
     nue->ant = NULL;
 
@@ -88,27 +86,25 @@ int ponerAlFinalListaDoble(tListaD* pl, const void* dato, unsigned cantBytes)
     tNodoD *act = *pl,
             *nue;
 
-    if(act)
+    while(act && act->sig)
+        act = act->sig;
+
+    nue = (tNodoD*)malloc(sizeof(tNodoD));
+
+    if(nue == NULL)
+        return SIN_MEM;
+
+    nue->info = malloc(cantBytes);
+
+    if(nue->info == NULL)
     {
-        while(act->sig)
-            act = act->sig;
-
-        nue = (tNodoD*)malloc(sizeof(tNodoD));
-
-        if(nue == NULL)
-            return SIN_MEM;
-
-        nue->info = malloc(cantBytes);
-
-        if(nue->info == NULL)
-        {
-            free(nue);
-            return SIN_MEM;
-        }
+        free(nue);
+        return SIN_MEM;
     }
 
     memcpy(nue->info, dato, cantBytes);
     nue->tamInfo = cantBytes;
+
     nue->sig = NULL;
     nue->ant = act;
 
@@ -200,11 +196,9 @@ int ponerEnOrdenListaDoble(tListaD* pl, const void* dato, unsigned cantBytes, in
 
 void ordenarLista(tListaD *pl, int(*comparar)(const void*, const void*))
 {
-    tNodoD  *act = *pl,
-             *sup = NULL,
-              *inf = NULL;
-    int      marca = 1;
-    void    *info;
+    tNodoD  *act = *pl, *sup = NULL,*inf = NULL;
+    int marca = 1;
+    void *info;
     unsigned tam;
 
     if(act == NULL)
@@ -217,7 +211,7 @@ void ordenarLista(tListaD *pl, int(*comparar)(const void*, const void*))
     {
         marca = 0;
 
-        while(act->sig != sup)
+        while(act != sup && act->sig != sup)
         {
             if(comparar(act->info, act->sig->info) > 0)
             {
@@ -240,7 +234,7 @@ void ordenarLista(tListaD *pl, int(*comparar)(const void*, const void*))
 
         sup = act;
 
-        while(act->ant != inf)
+        while(act != inf && act->ant != inf)
         {
             if(comparar(act->info, act->ant->info) < 0)
             {
@@ -258,7 +252,7 @@ void ordenarLista(tListaD *pl, int(*comparar)(const void*, const void*))
                 act->ant->tamInfo = tam;
             }
 
-            act = act->sig;
+            act = act->ant;
         }
 
         inf = act;
@@ -313,8 +307,8 @@ int mostrarDeDerIzqListaDoble(tListaD* pl, void(*mostrar)(const void*))
 int eliminarPorClave(tListaD *pl, void* dato, unsigned cantBytes, int(*comparar)(const void*, const void*))
 {
     tNodoD  *act = *pl,
-            *ant,
-            *sig;
+             *ant,
+             *sig;
     int     comp;
 
     if(act == NULL)
@@ -340,12 +334,13 @@ int eliminarPorClave(tListaD *pl, void* dato, unsigned cantBytes, int(*comparar)
         {
             sig->ant = ant;
             *pl = sig;
-        }else
+        }
+        else
         {
             *pl = ant;
         }
 
-        memcpy(dato, act->info, cantBytes);
+        memcpy(dato, act->info, MINIMO(cantBytes, act->tamInfo));
         free(act->info);
         free(act);
 

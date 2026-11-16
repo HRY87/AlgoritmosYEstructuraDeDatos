@@ -11,6 +11,8 @@
 #define DUPLICADO       2
 #define NO_EXISTE       3
 
+#define MINIMO(X,Y) ((X)<(Y)?(X):(Y))
+
 typedef struct sNodo
 {
     void            *info;
