@@ -1,0 +1,32 @@
+Un centro de monitoreo industrial supervisa el funcionamiento de distintos dispositivos distribuidos en 
+una planta. 
+Cada vez que un dispositivo genera un evento, se almacena un registro, esta información luego se 
+almacena en el archivo “eventos.txt”, el cual se encuentra ordenado por código de dispositivo. Es 
+un archivo de longitud variable, cada campo está separado por un “|”. 
+Cada registro contiene la siguiente información: 
+● codDisp: código de dispositivo (entero) 
+● fecha: fecha (AAAAMMDD)  
+● hora: hora del evento (HHMMSS)  
+● alarma: nivel de alarma (entero entre 1 y 5) 
+Se considera que un dispositivo se encuentra en “estado crítico” cuando registran “tres alarmas 
+consecutivas de nivel 5”. 
+Desarrollar un programa que procese el archivo “eventos.txt”, genere un archivo denominado 
+“alertas.txt” con los dispositivos que hayan alcanzado el estado crítico. Este archivo tiene las mismas 
+características que el archivo de entradas. 
+Por cada dispositivo crítico deberá almacenarse un registro con la siguiente información: 
+● código de dispositivo 
+● fecha y hora de la primera alarma de la secuencia; 
+● fecha y hora de la tercera alarma de la secuencia. 
+Desarrollar un programa en que: 
+1. Muestre un menú de opciones con las siguientes funcionalidades: 
+a. Procesar archivo de entrada 
+b. Mostrar archivo de entrada. 
+c. Mostrar el archivo de salida. 
+2. Implemente el manejo adecuado de archivos, memoria, estructuras de datos y control de flujo para 
+asegurar que se cumple lo solicitado. 
+3. Entregue el proyecto que resuelve lo anterior, borrando las carpetas "bin" y "obj". Incluya un lote de 
+pruebas que atienda la mayor cantidad posible de situaciones. 
+● Justificar la estructura de datos utilizada. 
+● No utilice memoria innecesaria. 
+● Crear un lote de prueba. 
+● No dejar basura en la memoria.
