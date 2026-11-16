@@ -1,0 +1,40 @@
+Una planta industrial produce distintos modelos de dispositivos electrónicos. Durante el proceso de 
+fabricación, se realiza un control de calidad por lote. Cada "lote" está identificado por un "código único", 
+y se registran en un archivo todos los resultados individuales de control de calidad para cada unidad 
+producida en ese lote. 
+El archivo `entrada.bin` contiene los registros en el siguiente formato:  - codLote: identificador alfanumérico del lote (ej. `L001`) - idProducto: número de serie o identificador interno del producto (valor entero) - resultadoControl: "OK" si pasó el control, "FALLA" si no lo pasó 
+Los registros están ordenados por lote. Es decir, todos los productos del lote `L001` aparecen seguidos 
+en el archivo, luego los de `L002`, y así sucesivamente. 
+El responsable de calidad desea automatizar el siguiente proceso: - Si al menos el “x%” del lote tiene resultado "OK", el lote completo se considera "aprobado" y sus 
+registros deben almacenarse en otro archivo llamado `lotesAprobados-x.txt`. - Si no se alcanza el “x%” de controles correctos, el lote se considera "observado" y todos sus registros 
+deben almacenarse en un archivo llamado `lotesObservados-x.txt`. 
+Los datos en los archivos de salida deben cumplir las siguientes indicaciones: - 
+la “x” en el nombre del archivo hace referencia al porcentaje de controles correctos considerados 
+para aceptar o rechazar el lote. - - - - - 
+En el archivo `lotesObservados-x.txt`: Deben aparecer primero los registros observados y luego 
+los “OK”. En cada grupo (FALLA, OK) los registros deben aparecer ordenados por “codLote e 
+idProducto”. 
+En el archivo `lotesAprobados-x.txt`: Deben aparecer primero los registros “OK”y luego los que 
+tienen ‘FALLA”. En cada grupo (FALLA, OK) los registros deben aparecer ordenados por 
+“codLote e idProducto”.  
+Los archivos de texto son de longitud variable y los datos están separados por coma: - 
+códigoLote, idProducto, resultadoControl 
+El archivo de entrada debe leerse  una sola vez. 
+La separación en los archivos de salida se realiza por lote completo, no por producto individual. 
+Desarrollar un programa en que: 
+1. Muestre un menú de opciones con las siguientes funcionalidades: 
+a. ingresar porcentaje “x” de controles correctos requerido( si se ingresa un 80, se acepta si 
+se alcanza el 80% de controles correctos. X es un valor entero) 
+b. Procesar archivo de entrada: leer el archivo `entrada.bin` y generar los archivos 
+`lotesAprobados-x.txt` y `lotesObservados-x.txt` según la condición descripta. 
+c. Mostrar archivo de entrada.
+d. Mostrar el contenido de los archivos de salida con un encabezado apropiado para cada 
+uno. 
+2. Implemente el manejo adecuado de archivos, memoria, estructuras de datos y control de flujo para 
+asegurar que los lotes se procesen correctamente. 
+3. Entregue el proyecto que resuelve lo anterior, borrando las carpetas "bin" y "obj". Incluya un lote de 
+pruebas que atienda la mayor cantidad posible de situaciones. 
+● Justificar la estructura de datos utilizada. 
+● No utilice memoria innecesaria. 
+● Crear un lote de prueba. 
+● No dejar basura en la memoria. 
