@@ -1,0 +1,31 @@
+Dado dos árboles binarios de búsqueda A y B. Se pide mostrar todos los nodos de A que no se 
+encuentran en B (A - B)..  
+Se pide: 
+● Crear los árboles binarios de búsqueda A y B, los datos para crear cada árbol se encuentran en 
+archivos de texto “A.TXT” y “B.TXT”. En este caso la información de los archivos son cadenas de 
+texto. En cada árbol, hay que almacenar palabras y se considera palabra todo aquello que esté 
+delimitado por algo que no sea ni letra ni número. Se asegura que la longitud de las líneas de 
+texto del archivo no supera los “MAXLINEA” caracteres (definida en tiempo de compilación). 
+Tenga en cuenta que las palabras pueden no haber quedado completas en una línea del 
+archivo. Los archivos no incluyen vocales acentuadas, ni diéresis,  ni la letra ñ). 
+Por ejemplo si MAXLINEA es de 10 caracteres y el texto es: 
+Luis Alberto Spinetta 
+Ana no duerme, espera el día 
+Sola en su cuarto, Ana quiere jugar, 
+0123456789 // solo es de referencia. NO aparece en el archivo 
+Luis Alber 
+to Spinett 
+a 
+Ana no due 
+rme, esper 
+a el dia  
+Sola en su 
+cuarto, A 
+na quiere  
+jugar, 
+● Realizar la diferencia A - B, imprimiendo el resultado por pantalla y además guardando la salida 
+en un archivo de texto “AmenosB.txt”. Cada palabra aparece en una línea del archivo. 
+● Justificar la o las estructura/s de datos utilizada/s. 
+● No utilice memoria innecesaria. 
+● Crear un lote de prueba. 
+● No dejar basura en la memoria.
